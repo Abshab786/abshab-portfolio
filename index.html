@@ -3,19 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>AB SHAB | Premium Android Developer & UI/UX Expert</title>
+    <meta name="title" content="AB SHAB | Premium Android Developer & UI/UX Expert">
+    <meta name="description" content="AB SHAB is a professional Android App Developer building high-performance, beautiful mobile applications with modern architecture and premium UI/UX. Available for freelance projects.">
+    <meta name="keywords" content="Android Developer, Kotlin Developer, Mobile App Development, UI/UX Designer, Freelance Developer, Java, Firebase, Material Design, AB SHAB">
+    <meta name="author" content="AB SHAB">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#8B5CF6">
+    <link rel="canonical" href="https://abshab.com">
+
+    <!-- Theme Initialization -->
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark-mode');
+        }
+    </script>
+
+    <!-- Google Search Console Verification -->
     <meta name="google-site-verification" content="niCfRM7-CJDlvxTvqBuF5lcWah2IAfauUYEy0rY_uwI" />
-    <title>AB SHAB | Premium Android Developer</title>
-    <link rel="stylesheet" href="style.css">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://abshab.com/">
+    <meta property="og:title" content="AB SHAB | Premium Android Developer & UI/UX Expert">
+    <meta property="og:description" content="Building beautiful, high-performance Android applications with clean UI, modern architecture and smooth user experiences.">
+    <meta property="og:image" content="https://abshab.com/assets/images/og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://abshab.com/">
+    <meta property="twitter:title" content="AB SHAB | Premium Android Developer & UI/UX Expert">
+    <meta property="twitter:description" content="Building beautiful, high-performance Android applications with clean UI, modern architecture and smooth user experiences.">
+    <meta property="twitter:image" content="https://abshab.com/assets/images/og-image.png">
+
+    <!-- Favicon & PWA -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "AB SHAB",
+      "url": "https://abshab.com",
+      "jobTitle": "Android App Developer",
+      "description": "Premium Android Developer focused on building modern, high-performance and user-friendly mobile applications.",
+      "sameAs": [
+        "https://github.com/abshab",
+        "https://wa.me/918012677770"
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "AB SHAB Portfolio",
+      "url": "https://abshab.com"
+    }
+    </script>
 </head>
 <body class="premium-theme">
+    <!-- Preloader -->
+    <div id="preloader" class="preloader">
+        <div class="loader-content">
+            <div class="loader-text">
+                <span class="loader-name">AB SHAB</span>
+                <span class="loader-role">Android Developer</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress-container">
+        <div class="scroll-progress-bar" id="scrollBar"></div>
+    </div>
+
+    <!-- Skip to Content for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
     <!-- Animated Background Elements -->
-    <div class="bg-glow-top"></div>
-    <div class="bg-glow-bottom"></div>
-    <div class="electric-lines">
+    <div class="bg-glow-top" aria-hidden="true"></div>
+    <div class="bg-glow-bottom" aria-hidden="true"></div>
+    <div class="electric-lines" aria-hidden="true">
         <svg width="100%" height="100%" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
             <path class="line line-1" d="M-100,200 Q400,100 800,400 T1600,200" />
             <path class="line line-2" d="M-100,500 Q500,700 900,300 T1600,600" />
@@ -25,42 +109,49 @@
 
     <!-- Floating Navbar -->
     <header class="navbar">
-        <nav class="nav-container glass">
+        <nav class="nav-container glass" aria-label="Main Navigation">
             <div class="logo">AB SHAB</div>
             <div class="nav-links">
                 <a href="#hero">Home</a>
+                <a href="#services">Services</a>
                 <a href="#about">About</a>
                 <a href="#skills">Skills</a>
-                <a href="#updates">What's New</a>
-                <a href="#upcoming">Upcoming</a>
                 <a href="#team">Team</a>
                 <a href="#contact">Contact</a>
             </div>
             <div class="nav-action">
+                <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Dark Mode">
+                    <i data-lucide="moon" class="moon-icon"></i>
+                    <i data-lucide="sun" class="sun-icon"></i>
+                </button>
                 <a href="#contact" class="btn-nav">Hire Me</a>
             </div>
         </nav>
     </header>
 
-    <main>
+    <main id="main-content">
         <!-- Hero Section -->
         <section id="hero" class="hero">
             <div class="container hero-wrapper">
                 <div class="hero-content">
-                    <div class="hero-badge">Android App Developer</div>
+                    <div class="availability-badge">
+                        <span class="pulse-dot"></span>
+                        Available for Freelance Projects
+                    </div>
+                    <div class="hero-badge">Professional Android Developer</div>
                     <h1>AB SHAB</h1>
-                    <p class="hero-sub">Building beautiful, high-performance Android applications with clean UI, modern architecture and smooth user experiences.</p>
+                    <p class="hero-sub">Building beautiful, high-performance Android applications with clean UI, modern architecture, and smooth user experiences that convert users into fans.</p>
                     <div class="hero-btns">
-                        <a href="#skills" class="btn-primary">Explore My Work</a>
-                        <a href="#contact" class="btn-secondary">Contact Me</a>
+                        <a href="#contact" class="btn-primary">Hire Me Now</a>
+                        <a href="#updates" class="btn-secondary">View My Work</a>
                     </div>
                 </div>
-                <div class="hero-visual">
+                <div class="hero-visual" aria-hidden="true">
                     <!-- 3D Abstract Representation -->
                     <div class="abstract-visual">
-                        <div class="node node-android"><i data-lucide="android"></i></div>
-                        <div class="node node-kotlin"><span>K</span></div>
-                        <div class="node node-java"><span>J</span></div>
+                        <div class="node node-android"><i data-lucide="bot"></i></div>
+                        <div class="node node-kotlin" aria-label="Kotlin"><span>K</span></div>
+                        <div class="node node-java" aria-label="Java"><span>J</span></div>
                         <div class="node node-firebase"><i data-lucide="flame"></i></div>
                         <svg class="visual-lines" width="400" height="400">
                             <line x1="200" y1="50" x2="350" y2="200" />
@@ -74,6 +165,38 @@
             </div>
         </section>
 
+        <!-- Services Section -->
+        <section id="services" class="services">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-tag">Expertise</div>
+                    <h2>Services I Provide</h2>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card glass">
+                        <i data-lucide="smartphone" class="icon-purple"></i>
+                        <h3>Android Development</h3>
+                        <p>Native app development using Kotlin and Java with a focus on performance and scalability.</p>
+                    </div>
+                    <div class="service-card glass">
+                        <i data-lucide="layout" class="icon-pink"></i>
+                        <h3>UI/UX Design</h3>
+                        <p>Crafting intuitive and aesthetically pleasing interfaces following Material Design guidelines.</p>
+                    </div>
+                    <div class="service-card glass">
+                        <i data-lucide="zap" class="icon-blue"></i>
+                        <h3>App Optimization</h3>
+                        <p>Improving existing app performance, reducing size, and enhancing battery efficiency.</p>
+                    </div>
+                    <div class="service-card glass">
+                        <i data-lucide="server" class="icon-green"></i>
+                        <h3>API Integration</h3>
+                        <p>Connecting apps with complex backend systems and third-party services securely.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- About Section -->
         <section id="about" class="about">
             <div class="container">
@@ -81,6 +204,7 @@
                     <div class="section-tag">Identity</div>
                     <h2>The Architect Behind the Screen</h2>
                     <p>I am AB SHAB, an Android Developer obsessed with the intersection of performance and aesthetics. I don't just build apps; I craft digital experiences that feel intuitive, fast, and remarkably clean. My approach combines the rigor of modern architecture with the finesse of premium UI/UX standards.</p>
+                    <p>With a track record of high-impact applications, I help businesses and entrepreneurs turn their visions into market-ready mobile products.</p>
                 </div>
             </div>
         </section>
@@ -107,69 +231,94 @@
             </div>
         </section>
 
-        <!-- Skills Section -->
+        <!-- Tech Stack & Skills Section -->
         <section id="skills" class="skills">
             <div class="container">
                 <div class="section-header">
                     <div class="section-tag">Toolkit</div>
-                    <h2>Core Technologies</h2>
+                    <h2>Tech Stack & Expertise</h2>
                 </div>
-                <div class="skills-grid">
-                    <div class="skill-card glass">
-                        <i data-lucide="android" class="icon-purple"></i>
-                        <h3>Android</h3>
+
+                <div class="skills-wrapper">
+                    <h3 class="skills-subtitle">Core Tech Stack</h3>
+                    <div class="skills-grid">
+                        <div class="skill-card glass" tabindex="0">
+                            <i data-lucide="smartphone" class="icon-purple" aria-hidden="true"></i>
+                            <h3>Android SDK</h3>
+                        </div>
+                        <div class="skill-card glass" tabindex="0">
+                            <div class="tech-icon" aria-hidden="true">K</div>
+                            <h3>Kotlin</h3>
+                        </div>
+                        <div class="skill-card glass" tabindex="0">
+                            <div class="tech-icon" aria-hidden="true">J</div>
+                            <h3>Java</h3>
+                        </div>
+                        <div class="skill-card glass" tabindex="0">
+                            <i data-lucide="flame" class="icon-pink" aria-hidden="true"></i>
+                            <h3>Firebase</h3>
+                        </div>
                     </div>
-                    <div class="skill-card glass">
-                        <div class="tech-icon">K</div>
-                        <h3>Kotlin</h3>
-                    </div>
-                    <div class="skill-card glass">
-                        <div class="tech-icon">J</div>
-                        <h3>Java</h3>
-                    </div>
-                    <div class="skill-card glass">
-                        <i data-lucide="flame" class="icon-pink"></i>
-                        <h3>Firebase</h3>
-                    </div>
-                    <div class="skill-card glass">
-                        <i data-lucide="webhook" class="icon-blue"></i>
-                        <h3>REST API</h3>
-                    </div>
-                    <div class="skill-card glass">
-                        <i data-lucide="database" class="icon-green"></i>
-                        <h3>SQLite</h3>
-                    </div>
-                    <div class="skill-card glass">
-                        <i data-lucide="palette" class="icon-crimson"></i>
-                        <h3>Material Design</h3>
-                    </div>
-                    <div class="skill-card glass">
-                        <i data-lucide="github" class="icon-dark"></i>
-                        <h3>GitHub</h3>
+
+                    <h3 class="skills-subtitle" style="margin-top: 3rem;">Specialized Skills</h3>
+                    <div class="skills-grid">
+                        <div class="skill-card glass" tabindex="0">
+                            <i data-lucide="webhook" class="icon-blue" aria-hidden="true"></i>
+                            <h3>REST API</h3>
+                        </div>
+                        <div class="skill-card glass" tabindex="0">
+                            <i data-lucide="database" class="icon-green" aria-hidden="true"></i>
+                            <h3>SQLite/Room</h3>
+                        </div>
+                        <div class="skill-card glass" tabindex="0">
+                            <i data-lucide="palette" class="icon-crimson" aria-hidden="true"></i>
+                            <h3>Material UI</h3>
+                        </div>
+                        <div class="skill-card glass" tabindex="0">
+                            <i data-lucide="shield-check" class="icon-purple" aria-hidden="true"></i>
+                            <h3>App Security</h3>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- What's New Section -->
-        <section id="updates" class="updates">
+        <!-- Featured Projects Section -->
+        <section id="updates" class="projects">
             <div class="container">
                 <div class="section-header">
-                    <div class="section-tag">Journal</div>
-                    <h2>What's New</h2>
+                    <div class="section-tag">Portfolio</div>
+                    <h2>Featured Projects</h2>
                 </div>
-                <div class="timeline">
-                    <div class="timeline-item glass">
-                        <div class="item-date">May 2026</div>
-                        <h3>Performance Engine Update</h3>
-                        <p>Optimized background processing for upcoming health tracking suite, reducing battery consumption by 15%.</p>
-                        <div class="item-tag">Optimization</div>
+                <div class="projects-grid">
+                    <div class="project-card glass">
+                        <div class="project-image-placeholder">
+                            <i data-lucide="cpu" class="icon-purple"></i>
+                        </div>
+                        <div class="project-info">
+                            <div class="item-tag">Tool</div>
+                            <h3>Performance Engine Suite</h3>
+                            <p>A comprehensive system tool for Android that optimizes background processing and reduces battery consumption by 15%.</p>
+                            <div class="project-tech">
+                                <span>Kotlin</span>
+                                <span>Coroutines</span>
+                                <span>WorkerManager</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="timeline-item glass">
-                        <div class="item-date">April 2026</div>
-                        <h3>Material You Integration</h3>
-                        <p>Added dynamic color support across all production apps for a more personalized Android 13+ experience.</p>
-                        <div class="item-tag">UI/UX</div>
+                    <div class="project-card glass">
+                        <div class="project-image-placeholder">
+                            <i data-lucide="palette" class="icon-pink"></i>
+                        </div>
+                        <div class="project-info">
+                            <div class="item-tag">UI/UX</div>
+                            <h3>Material You Dashboard</h3>
+                            <p>Fully integrated dynamic color engine for modern Android apps, supporting real-time theme switching and accessibility.</p>
+                            <div class="project-tech">
+                                <span>Jetpack Compose</span>
+                                <span>Material 3</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -180,16 +329,16 @@
             <div class="container">
                 <div class="section-header">
                     <div class="section-tag">Horizon</div>
-                    <h2>Upcoming Projects</h2>
+                    <h2>In Development</h2>
                 </div>
                 <div class="upcoming-grid">
                     <div class="upcoming-card glass">
-                        <div class="coming-soon">Coming Soon</div>
+                        <div class="coming-soon">Upcoming</div>
                         <h3>NovaFinance Pro</h3>
                         <p>A Web3-integrated personal finance engine with biometrics and real-time crypto tracking.</p>
                     </div>
                     <div class="upcoming-card glass">
-                        <div class="coming-soon">Q4 2026</div>
+                        <div class="coming-soon">Coming Soon</div>
                         <h3>Pulse Health IoT</h3>
                         <p>Deep integration with wearable sensors for professional athlete performance monitoring.</p>
                     </div>
@@ -208,23 +357,23 @@
                     <!-- Member 1: AB SHAB -->
                     <div class="team-card glass">
                         <div class="member-image-wrapper">
-                            <img src="assets/images/abshab.png" alt="AB SHAB" class="member-image">
+                            <img src="assets/images/abshab.png" alt="AB SHAB - Founder & Lead Android App Developer" class="member-image" loading="lazy">
                         </div>
                         <div class="member-info">
                             <h3>AB SHAB</h3>
-                            <span class="member-role">Founder & Lead Android App Developer</span>
-                            <p>Passionate Android App Developer focused on building modern, high-performance and user-friendly mobile applications. Responsible for product development, app architecture, UI/UX implementation and technical innovation.</p>
+                            <span class="member-role">Founder & Lead Android Developer</span>
+                            <p>Passionate Android App Developer focused on building modern, high-performance and user-friendly mobile applications. Responsible for product architecture and technical innovation.</p>
                         </div>
                     </div>
                     <!-- Member 2: Mohan Joshi -->
                     <div class="team-card glass">
                         <div class="member-image-wrapper">
-                            <img src="assets/images/mohan-joshi.png" alt="Mohan Joshi" class="member-image">
+                            <img src="assets/images/mohan-joshi.png" alt="Mohan Joshi - Co-Founder & Business Partner" class="member-image" loading="lazy">
                         </div>
                         <div class="member-info">
                             <h3>Mohan Joshi</h3>
-                            <span class="member-role">Co-Founder & Business Partner</span>
-                            <p>Handles business strategy, investments, project planning and long-term growth. Works closely on product decisions, partnerships and overall business operations while supporting the development journey.</p>
+                            <span class="member-role">Co-Founder & Business Lead</span>
+                            <p>Handles business strategy, investments, and long-term growth. Works closely on product decisions and partnerships to ensure scalable business operations.</p>
                         </div>
                     </div>
                 </div>
@@ -237,24 +386,36 @@
                 <div class="contact-wrapper glass">
                     <div class="contact-info">
                         <div class="section-tag">Connect</div>
-                        <h2>Initiate a Project</h2>
-                        <p>Let's build something exceptional. Reach out through any channel.</p>
+                        <h2>Let's Work Together</h2>
+                        <p>Ready to start your next big project? Reach out and let's make it happen.</p>
                         <div class="social-links">
-                            <a href="mailto:ab.shaboffical@gmail.com" class="social-item"><i data-lucide="mail"></i> Email</a>
-                            <a href="https://wa.me/918012677770" class="social-item"><i data-lucide="message-circle"></i> WhatsApp</a>
+                            <a href="mailto:ab.shaboffical@gmail.com" class="social-item" aria-label="Send Email to AB SHAB">
+                                <i data-lucide="mail" aria-hidden="true"></i> Email Me
+                            </a>
+                            <a href="https://wa.me/918012677770" class="social-item" target="_blank" rel="noopener noreferrer" aria-label="Chat with AB SHAB on WhatsApp">
+                                <i data-lucide="message-circle" aria-hidden="true"></i> WhatsApp
+                            </a>
                         </div>
                     </div>
-                    <form class="contact-form" id="contactForm">
+                    <form class="contact-form" id="contactForm" aria-label="Contact Form" action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="5d0b5ff5-8976-494a-ab19-1c78a378d5f3">
                         <div class="input-group">
-                            <input type="text" id="userName" placeholder="Your Name" required>
+                            <label for="userName" class="sr-only">Your Name</label>
+                            <input type="text" id="userName" name="name" placeholder="Your Name" required>
                         </div>
                         <div class="input-group">
-                            <input type="email" id="userEmail" placeholder="Your Email" required>
+                            <label for="userEmail" class="sr-only">Your Email</label>
+                            <input type="email" id="userEmail" name="email" placeholder="Your Email" required>
                         </div>
                         <div class="input-group">
-                            <textarea rows="5" id="projectDesc" placeholder="Project Description" required></textarea>
+                            <label for="projectDesc" class="sr-only">Project Description</label>
+                            <textarea rows="5" id="projectDesc" name="message" placeholder="How can I help you with your project?" required></textarea>
                         </div>
-                        <button type="submit" class="btn-primary">Send Transmission</button>
+                        <div id="formStatus" class="form-status"></div>
+                        <button type="submit" class="btn-primary" id="submitBtn">
+                            <span class="btn-text">Send Transmission</span>
+                            <span class="btn-loader"></span>
+                        </button>
                     </form>
                 </div>
             </div>
@@ -264,11 +425,16 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <p>&copy; 2026 AB SHAB. All rights reserved.</p>
-                <p>Made with <span class="heart">❤️</span> by AB SHAB</p>
+                <p>&copy; <span id="currentYear"></span> AB SHAB. All rights reserved.</p>
+                <p>Made with <span class="heart" aria-label="love">❤️</span> by AB SHAB</p>
             </div>
         </div>
     </footer>
+
+    <!-- Back to Top -->
+    <button id="backToTop" class="back-to-top" aria-label="Back to Top">
+        <i data-lucide="arrow-up"></i>
+    </button>
 
     <script src="script.js"></script>
     <script>
