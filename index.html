@@ -165,12 +165,12 @@
         <nav class="nav-container glass" aria-label="Main Navigation">
             <div class="logo">AB SHAB</div>
             <div class="nav-links">
-                <a href="#hero">Home</a>
-                <a href="#services">Services</a>
-                <a href="#about">About</a>
-                <a href="#skills">Skills</a>
-                <a href="#team">Team</a>
-                <a href="#contact">Contact</a>
+                <a href="#hero"><i data-lucide="home"></i> Home</a>
+                <a href="#services"><i data-lucide="layers"></i> Services</a>
+                <a href="#about"><i data-lucide="user"></i> About</a>
+                <a href="#skills"><i data-lucide="terminal"></i> Skills</a>
+                <a href="#team"><i data-lucide="users"></i> Team</a>
+                <a href="#contact"><i data-lucide="message-square"></i> Contact</a>
             </div>
             <div class="nav-action">
                 <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Dark Mode">
@@ -178,6 +178,9 @@
                     <i data-lucide="sun" class="sun-icon"></i>
                 </button>
                 <a href="#contact" class="btn-nav">Hire Me</a>
+                <button class="mobile-menu-btn" aria-label="Toggle Menu">
+                    <i data-lucide="menu"></i>
+                </button>
             </div>
         </nav>
     </header>
@@ -187,24 +190,49 @@
         <section id="hero" class="hero">
             <div class="container hero-wrapper">
                 <div class="hero-content">
+                    <h1 class="hero-title-mobile"><i data-lucide="sparkles" class="intro-icon"></i> Crafting Premium Android Experiences</h1>
                     <div class="availability-badge">
                         <span class="pulse-dot"></span>
                         Available for Freelance Projects
                     </div>
-                    <div class="hero-badge">Professional Android Developer</div>
-                    <h1>AB SHAB</h1>
+                    <div class="hero-badge">
+                        <i data-lucide="briefcase" class="badge-icon-sm"></i>
+                        Professional Android Developer
+                    </div>
+                    <h1 class="hero-title-desktop">AB SHAB</h1>
                     <p class="hero-sub">Building beautiful, high-performance Android applications with clean UI, modern architecture, and smooth user experiences that convert users into fans.</p>
                     <div class="hero-btns">
-                        <a href="#contact" class="btn-primary">Hire Me Now</a>
-                        <a href="#updates" class="btn-secondary">View My Work</a>
+                        <a href="#contact" class="btn-primary">
+                            <i data-lucide="send" class="btn-icon"></i>
+                            Hire Me Now
+                        </a>
+                        <a href="#updates" class="btn-secondary">
+                            <i data-lucide="eye" class="btn-icon"></i>
+                            View My Work
+                        </a>
                     </div>
-                    <!-- Tech Stack Chips -->
+                    <!-- Tech Stack Chips (As per image) -->
                     <div class="hero-chips">
-                        <span class="chip-item">Kotlin</span>
-                        <span class="chip-item">Android SDK</span>
-                        <span class="chip-item">Jetpack Compose</span>
-                        <span class="chip-item">Firebase</span>
-                        <span class="chip-item">Material 3</span>
+                        <div class="chip-card glass">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg" alt="Kotlin" class="chip-icon">
+                            <span>Kotlin</span>
+                        </div>
+                        <div class="chip-card glass">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg" alt="Android" class="chip-icon">
+                            <span>Android SDK</span>
+                        </div>
+                        <div class="chip-card glass">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jetpackcompose/jetpackcompose-original.svg" alt="Compose" class="chip-icon">
+                            <span>Jetpack Compose</span>
+                        </div>
+                        <div class="chip-card glass">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase" class="chip-icon">
+                            <span>Firebase</span>
+                        </div>
+                        <div class="chip-card glass">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/materialui/materialui-original.svg" alt="M3" class="chip-icon">
+                            <span>Material 3</span>
+                        </div>
                     </div>
                 </div>
                 <div class="hero-visual" aria-hidden="true">
