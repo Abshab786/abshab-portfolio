@@ -208,7 +208,7 @@ Portfolio.launch()`;
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
     // 6. Reveal Animation Logic
-    const revealElements = document.querySelectorAll('section, .skill-card, .project-card, .upcoming-card, .glass-card, .team-card, .service-card, .bento-card-wrapper');
+    const revealElements = document.querySelectorAll('section, .skill-card, .project-card, .upcoming-card, .glass-card, .team-card, .service-card, .bento-card-wrapper, .footer');
 
     function handleReveal() {
         const triggerBottom = window.innerHeight * 0.9;
