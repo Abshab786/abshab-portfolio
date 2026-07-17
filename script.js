@@ -3,22 +3,161 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Preloader Logic (2.5 - 3 seconds as requested)
-    const preloader = document.getElementById('preloader');
+    // 1. WORLD-CLASS PREMIUM SPLASH SCREEN LOGIC
+    const typewriter = document.getElementById('code-typing-engine');
+    const bar = document.getElementById('progress-fill-premium');
+    const pct = document.getElementById('pct-counter-ui');
+    const statusText = document.getElementById('loading-msg-ui');
+    const splash = document.getElementById('preloader');
 
-    const hidePreloader = () => {
-        if (preloader) {
-            preloader.style.opacity = '0';
-            setTimeout(() => {
-                preloader.style.visibility = 'hidden';
-                // Trigger reveal for elements already in view after loader disappears
-                handleReveal();
-            }, 800);
+    // Ensure body is not scrollable during splash
+    document.body.style.overflow = 'hidden';
+
+    const codeSnippet = `object Abshab {
+    val name = "AB SHAB"
+    val role = "Founder & Lead Android Developer"
+    val mission = "Building Beautiful Android Experiences"
+    val stack = listOf(
+        "Kotlin", "Jetpack Compose",
+        "Firebase", "MVVM", "REST API"
+    )
+}
+Portfolio.launch()`;
+
+    const loadingPhases = [
+        "Initializing Portfolio...",
+        "Loading Android Stack...",
+        "Loading Components...",
+        "Compiling Creativity...",
+        "Optimizing Performance...",
+        "Launching Portfolio..."
+    ];
+
+    let charIdx = 0;
+    let progress = 0;
+    let isTypingDone = false;
+
+    function startPremiumSplash() {
+        const typeInterval = setInterval(() => {
+            if (typewriter && charIdx < codeSnippet.length) {
+                typewriter.textContent += codeSnippet.charAt(charIdx);
+                charIdx++;
+            } else {
+                clearInterval(typeInterval);
+                isTypingDone = true;
+            }
+        }, 15);
+    }
+
+    // Sync progress with typing and time
+    const progressInterval = setInterval(() => {
+        if (progress < 100) {
+            // Calculate typing progress
+            let typingProgress = (charIdx / codeSnippet.length) * 100;
+
+            // Advance progress bar
+            if (progress < typingProgress) {
+                progress += 1.2;
+            } else {
+                progress += 0.3;
+            }
+
+            if (progress > 100) progress = 100;
+
+            const p = Math.floor(progress);
+            if (bar) bar.style.width = `${p}%`;
+            if (pct) pct.textContent = `${p}%`;
+
+            // Update status messages
+            const phaseIdx = Math.min(Math.floor(p / 17), loadingPhases.length - 1);
+            if (statusText && statusText.textContent !== loadingPhases[phaseIdx]) {
+                statusText.style.opacity = 0;
+                setTimeout(() => {
+                    statusText.textContent = loadingPhases[phaseIdx];
+                    statusText.style.opacity = 1;
+                }, 200);
+            }
         }
-    };
 
-    // Forced display for 2.5s for premium feel
-    setTimeout(hidePreloader, 2500);
+        // Check if finished
+        if (isTypingDone && progress >= 100) {
+            clearInterval(progressInterval);
+            finishPremiumSplash();
+        }
+    }, 30);
+
+    function finishPremiumSplash() {
+        setTimeout(() => {
+            const logoText = document.querySelector('.splash-logo-text');
+            if(logoText) {
+                logoText.style.color = "#8B5CF6";
+                logoText.style.textShadow = "0 0 40px rgba(139, 92, 246, 0.6)";
+            }
+
+            // Fade out icons
+            document.querySelectorAll('.f-icon-item').forEach((icon, i) => {
+                setTimeout(() => {
+                    icon.style.transition = 'opacity 0.5s ease';
+                    icon.style.opacity = 0;
+                }, i * 50);
+            });
+
+            // Final transition to main website
+            setTimeout(() => {
+                if (splash) {
+                    splash.style.transition = 'opacity 1s ease, filter 1s ease';
+                    splash.style.filter = "blur(50px)";
+                    splash.style.opacity = "0";
+
+                    setTimeout(() => {
+                        splash.style.display = "none";
+                        document.body.style.overflow = "auto";
+                        // Trigger reveal for homepage elements
+                        handleReveal();
+                    }, 1000);
+                }
+            }, 800);
+        }, 500);
+    }
+
+    // Canvas Background logic
+    const canvas = document.getElementById('particle-canvas-new');
+    if(canvas) {
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        const resize = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.v = Math.random() * 0.4 + 0.1;
+                this.s = Math.random() * 2;
+            }
+            update() { this.y -= this.v; if(this.y < 0) this.y = canvas.height; }
+            draw() { ctx.fillStyle = "rgba(139, 92, 246, 0.15)"; ctx.beginPath(); ctx.arc(this.x, this.y, this.s, 0, Math.PI * 2); ctx.fill(); }
+        }
+        for(let i=0; i<40; i++) particles.push(new Particle());
+        function anim() {
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            particles.forEach(p=>{p.update(); p.draw();});
+            requestAnimationFrame(anim);
+        }
+        anim();
+    }
+
+    // Fail-safe: Force hide splash if it takes too long (10 seconds)
+    setTimeout(() => {
+        if (splash && splash.style.display !== 'none') {
+            console.log('Splash Screen Failsafe Triggered');
+            finishPremiumSplash();
+        }
+    }, 10000);
+
+    // Start the splash logic
+    setTimeout(startPremiumSplash, 800);
 
     // 2. Theme Toggle Logic
     const themeToggle = document.getElementById('themeToggle');
@@ -47,13 +186,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (scrollBar) scrollBar.style.width = scrolled + "%";
 
-        // Back to Top Visibility
         if (backToTop) {
-            if (winScroll > 500) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
+            if (winScroll > 500) backToTop.classList.add('visible');
+            else backToTop.classList.remove('visible');
         }
 
         handleReveal();
@@ -64,10 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 4. Back to Top Smooth Scroll
     if (backToTop) {
         backToTop.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
 
@@ -75,11 +207,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const yearEl = document.getElementById('currentYear');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    // 6. Reveal Animation Logic (Robust Implementation)
-    const revealElements = document.querySelectorAll('section, .skill-card, .project-card, .upcoming-card, .glass-card, .team-card, .service-card');
-
-    // Add initial reveal class
-    revealElements.forEach(el => el.classList.add('reveal'));
+    // 6. Reveal Animation Logic
+    const revealElements = document.querySelectorAll('section, .skill-card, .project-card, .upcoming-card, .glass-card, .team-card, .service-card, .bento-card-wrapper');
 
     function handleReveal() {
         const triggerBottom = window.innerHeight * 0.9;
@@ -88,6 +217,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const elementTop = el.getBoundingClientRect().top;
             if (elementTop < triggerBottom) {
                 el.classList.add('active');
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
                 if (el.classList.contains('stats')) {
                     animateCounters(el);
                 }
@@ -101,7 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const duration = 2000;
 
         counts.forEach(count => {
-            count.classList.add('counted'); // Prevent re-animation
+            count.classList.add('counted');
             const target = +count.getAttribute('data-target');
             const decimals = parseInt(count.getAttribute('data-decimal')) || 0;
             const startTime = performance.now();
@@ -109,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const updateCount = (currentTime) => {
                 const elapsed = currentTime - startTime;
                 const progress = Math.min(elapsed / duration, 1);
-                const easeProgress = 1 - Math.pow(1 - progress, 4); // Quart easing
+                const easeProgress = 1 - Math.pow(1 - progress, 4);
                 const current = easeProgress * target;
 
                 count.innerText = decimals > 0 ? current.toFixed(decimals) : Math.floor(current).toLocaleString();
@@ -129,29 +260,22 @@ document.addEventListener('DOMContentLoaded', () => {
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-
-            const email = document.getElementById('userEmail').value;
-            if (!/^\S+@\S+\.\S+$/.test(email)) {
-                showStatus('Please enter a valid email address.', 'error');
-                return;
-            }
-
             submitBtn.classList.add('form-loading');
             submitBtn.disabled = true;
 
             const formData = new FormData(contactForm);
             const object = Object.fromEntries(formData);
-            const json = JSON.stringify(object);
 
-            showStatus('Sending transmission...', 'info');
+            if (formStatus) {
+                formStatus.textContent = 'Sending transmission...';
+                formStatus.className = 'form-status status-info';
+                formStatus.style.display = 'block';
+            }
 
             fetch('https://api.web3forms.com/submit', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: json
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify(object)
             })
             .then(async (response) => {
                 let res = await response.json();
@@ -159,13 +283,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     showStatus('Transmission received! I will contact you soon.', 'success');
                     contactForm.reset();
                 } else {
-                    showStatus(res.message || 'Something went wrong. Please try again.', 'error');
+                    showStatus(res.message || 'Something went wrong.', 'error');
                 }
             })
             .catch(() => {
-                showStatus('Network error. Please check your connection.', 'error');
+                showStatus('Network error.', 'error');
             })
-            .then(() => {
+            .finally(() => {
                 submitBtn.classList.remove('form-loading');
                 submitBtn.disabled = false;
             });
@@ -191,7 +315,4 @@ document.addEventListener('DOMContentLoaded', () => {
             glowBottom.style.transform = `translate(${-x}px, ${-y}px)`;
         });
     }
-
-    // Initialize state
-    handleScroll();
 });
