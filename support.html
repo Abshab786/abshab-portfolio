@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support | AB SHAB</title>
+    <link rel="icon" type="image/png" href="assets/images/only_ab_logo.png">
+    <link rel="apple-touch-icon" href="assets/images/only_ab_logo.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            --bg-base: #FAF7FF;
+            --primary: #8B5CF6;
+            --primary-dark: #7C3AED;
+            --secondary: #EC4899;
+            --text-main: #1F2937;
+            --text-sub: #4B5563;
+            --glass-bg: rgba(255, 255, 255, 0.45);
+            --glass-border: rgba(255, 255, 255, 0.6);
+            --nav-bg: rgba(255, 255, 255, 0.4);
+            --radius: 24px;
+            --shadow-premium: 0 20px 40px rgba(139, 92, 246, 0.08);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .dark-mode {
+            --bg-base: #0F172A;
+            --text-main: #F8FAFC;
+            --text-sub: #94A3B8;
+            --glass-bg: rgba(30, 41, 59, 0.4);
+            --glass-border: rgba(51, 65, 85, 0.5);
+            --nav-bg: rgba(15, 23, 42, 0.6);
+            --shadow-premium: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-base); color: var(--text-main); line-height: 1.6; transition: background-color 0.4s ease; }
+        /* Logo Styling */
+        .nav-logo { width: 44px; height: auto; margin-right: 12px; }
+        .logo-wrapper { display: flex; align-items: center; text-decoration: none; }
+        .footer-logo-box { display: flex; align-items: center; gap: 12px; margin-bottom: 0.5rem; }
+        .footer-logo { width: 40px; height: auto; }
+        .footer-brand-name { font-size: 1.25rem; font-weight: 800; color: var(--text-main); }
+        @media (max-width: 1024px) { .nav-logo { width: 38px; } }
+
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 48px; width: 100%; }
+        .glass { background: var(--glass-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid var(--glass-border); box-shadow: var(--shadow-premium); }
+
+        /* Navbar */
+        .navbar { position: fixed; top: 1.5rem; left: 0; right: 0; z-index: 1000; }
+        .nav-container { max-width: 1000px; margin: 0 auto; padding: 0.8rem 2rem; border-radius: 100px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: 800; font-size: 1.4rem; color: var(--text-main); text-decoration: none; }
+        .nav-links a { text-decoration: none; color: var(--text-main); font-size: 0.9rem; font-weight: 600; margin: 0 0.65rem; }
+        .theme-toggle-btn { background: var(--glass-bg); border: 1px solid var(--glass-border); color: var(--text-main); width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition); }
+        .dark-mode .moon-icon, .sun-icon { display: none; }
+        .dark-mode .sun-icon { display: block; }
+        .moon-icon { display: block; }
+        .btn-nav { background: var(--primary); color: #fff; padding: 0.7rem 1.5rem; border-radius: 100px; text-decoration: none; font-weight: 700; font-size: 0.85rem; }
+
+        /* Hero */
+        .hero { padding: 12rem 0 6rem; text-align: center; }
+        .hero h1 { font-size: 4rem; font-weight: 800; margin-bottom: 1.5rem; background: linear-gradient(to right, var(--text-main), var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 1.25rem; color: var(--text-sub); max-width: 600px; margin: 0 auto; }
+
+        /* Support Grid */
+        .support-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 6rem; }
+        .support-card { padding: 3rem; border-radius: var(--radius); text-align: center; transition: var(--transition); }
+        .support-card:hover { transform: translateY(-10px); border-color: var(--primary); }
+        .support-card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 1.5rem; }
+        .support-card h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+        .support-card p { color: var(--text-sub); margin-bottom: 1rem; }
+
+        /* FAQ */
+        .faq-section { max-width: 800px; margin: 0 auto 8rem; }
+        .faq-section h2 { font-size: 2.5rem; font-weight: 800; text-align: center; margin-bottom: 3rem; }
+        .faq-item { margin-bottom: 1.5rem; border-radius: 20px; overflow: hidden; }
+        .faq-question { padding: 1.5rem 2rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 700; font-size: 1.1rem; }
+        .faq-answer { padding: 0 2rem; max-height: 0; overflow: hidden; transition: all 0.4s ease; color: var(--text-sub); }
+        .faq-item.active .faq-answer { padding: 1rem 2rem 2rem; max-height: 200px; }
+        .faq-item.active i { transform: rotate(180deg); }
+
+        /* CTA */
+        .cta-section { text-align: center; padding: 6rem 0; background: rgba(139, 92, 246, 0.05); border-radius: 40px; margin-bottom: 8rem; border: 1px solid var(--glass-border); }
+        .cta-btns { display: flex; justify-content: center; gap: 1.5rem; margin-top: 2rem; flex-wrap: wrap; }
+        .btn-primary { background: var(--primary); color: #fff; padding: 1.2rem 2.5rem; border-radius: 100px; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 10px; transition: var(--transition); }
+        .btn-secondary { background: #fff; color: var(--text-main); padding: 1.2rem 2.5rem; border-radius: 100px; text-decoration: none; font-weight: 700; border: 1px solid var(--glass-border); transition: var(--transition); }
+        .dark-mode .btn-secondary { background: rgba(255,255,255,0.1); color: #fff; }
+
+        /* Footer */
+        .footer { padding: 4rem 0; border-top: 1px solid var(--glass-border); }
+        .footer-bottom { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+        .footer-links { display: flex; gap: 1rem; color: var(--text-sub); font-size: 0.9rem; }
+        .footer-links a { text-decoration: none; color: inherit; }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 24px; }
+            .hero h1 { font-size: 2.8rem; }
+            .navbar { top: 0; position: sticky; border-radius: 0; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body class="premium-theme">
+    <header class="navbar">
+        <nav class="nav-container glass">
+            <a href="index.html" class="logo">AB SHAB</a>
+            <div class="nav-links">
+                <a href="index.html#hero">Home</a>
+                <a href="index.html#services">Services</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#skills">Skills</a>
+                <a href="index.html#team">Team</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <div class="nav-action" style="display: flex; gap: 10px;">
+                <button id="themeToggle" class="theme-toggle-btn"><i data-lucide="moon" class="moon-icon"></i><i data-lucide="sun" class="sun-icon"></i></button>
+                <a href="index.html#contact" class="btn-nav">Hire Me</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h1>Need Help?</h1>
+            <p>We're here to assist you with any questions or issues you may have regarding our apps and services.</p>
+        </section>
+
+        <div class="support-grid">
+            <div class="support-card glass">
+                <i data-lucide="mail"></i>
+                <h3>Email Support</h3>
+                <p>For technical issues and general inquiries.</p>
+                <a href="mailto:abshab.official@gmail.com" style="color: var(--primary); font-weight: 700; text-decoration: none;">abshab.official@gmail.com</a>
+            </div>
+            <div class="support-card glass">
+                <i data-lucide="clock"></i>
+                <h3>Support Hours</h3>
+                <p>Monday to Saturday</p>
+                <p style="font-weight: 700; color: var(--text-main);">10 AM - 7 PM IST</p>
+            </div>
+            <div class="support-card glass">
+                <i data-lucide="globe"></i>
+                <h3>Website</h3>
+                <p>Official Portfolio & Documentation</p>
+                <a href="https://abshab.com" style="color: var(--primary); font-weight: 700; text-decoration: none;">abshab.com</a>
+            </div>
+        </div>
+
+        <section class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-item glass">
+                <div class="faq-question">How do I contact support? <i data-lucide="chevron-down"></i></div>
+                <div class="faq-answer">You can contact us via email at abshab.official@gmail.com or through the contact form on our homepage.</div>
+            </div>
+
+            <div class="faq-item glass">
+                <div class="faq-question">How long does it take to get a response? <i data-lucide="chevron-down"></i></div>
+                <div class="faq-answer">We typically respond within 24-48 hours during our working hours (Monday-Saturday).</div>
+            </div>
+
+            <div class="faq-item glass">
+                <div class="faq-question">How do I report a bug? <i data-lucide="chevron-down"></i></div>
+                <div class="faq-answer">Please send an email with the subject "Bug Report" along with your device model, Android version, and steps to reproduce the issue.</div>
+            </div>
+
+            <div class="faq-item glass">
+                <div class="faq-question">Can I request a new feature? <i data-lucide="chevron-down"></i></div>
+                <div class="faq-answer">Yes! We love hearing from our users. Feel free to suggest features via email.</div>
+            </div>
+
+            <div class="faq-item glass">
+                <div class="faq-question">Do you provide app development services? <i data-lucide="chevron-down"></i></div>
+                <div class="faq-answer">Yes, AB SHAB provides premium Android development and UI/UX design services for freelance projects.</div>
+            </div>
+        </section>
+
+        <section class="cta-section glass">
+            <h2>Still have questions?</h2>
+            <p>Our team is ready to help you turn your vision into reality.</p>
+            <div class="support-branding" style="margin: 2rem 0; padding: 1rem; border-top: 1px solid var(--glass-border);">
+                <p style="font-weight: 800; color: var(--primary);">Support Team: AB SHAB</p>
+                <p style="font-size: 0.9rem; color: var(--text-sub);">Managed by: Ajay Singh</p>
+            </div>
+            <div class="cta-btns">
+                <a href="mailto:abshab.official@gmail.com" class="btn-primary"><i data-lucide="mail"></i> Email Us Now</a>
+                <a href="index.html" class="btn-secondary">Back to Home</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-bottom">
+            <div class="footer-links">
+                <a href="terms.html">Terms</a> • <a href="privacy.html">Privacy</a> • <a href="support.html">Support</a> • <a href="sitemap.html">Sitemap</a>
+            </div>
+            <p style="color: var(--text-sub); font-size: 0.9rem;">&copy; 2026 AB SHAB. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Theme
+        const themeToggle = document.getElementById('themeToggle');
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark-mode'); }
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark-mode');
+            localStorage.setItem('theme', document.documentElement.classList.contains('dark-mode') ? 'dark' : 'light');
+        });
+
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', () => {
+                const item = q.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

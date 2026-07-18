@@ -15,6 +15,141 @@
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* --- Logo Styling & Animations --- */
+.pulse-anim { animation: pulseLogo 2s infinite ease-in-out; }
+@keyframes pulseLogo {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+}
+
+.floating-anim { animation: floatLogo 4s infinite ease-in-out; }
+@keyframes floatLogo {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.splash-logo-img {
+    width: 120px;
+    height: auto;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 0 15px rgba(139, 92, 246, 0.3));
+}
+
+.nav-logo {
+    width: 44px;
+    height: auto;
+    margin-right: 12px;
+}
+
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.hero-logo-container {
+    margin-bottom: 2.5rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.hero-main-logo {
+    width: 160px;
+    height: auto;
+    filter: drop-shadow(0 0 30px rgba(139, 92, 246, 0.4));
+}
+
+.brand-header-flex, .business-header-flex {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.about-section-logo {
+    width: 90px;
+    height: auto;
+    flex-shrink: 0;
+}
+
+.business-section-logo {
+    width: 60px;
+    height: auto;
+}
+
+.contact-section-logo {
+    width: 70px;
+    height: auto;
+    margin-bottom: 1.5rem;
+}
+
+.footer-logo-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 1.5rem;
+}
+
+.footer-logo {
+    width: 40px;
+    height: auto;
+}
+
+.footer-brand-name {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--text-main);
+}
+
+@media (max-width: 1024px) {
+    .brand-header-flex, .business-header-flex {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    .hero-main-logo { width: 120px; }
+}
+
+.founder-real-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-sub);
+    margin-top: -0.2rem;
+    margin-bottom: 0.4rem;
+    opacity: 0.8;
+}
+
+/* Performance Boost */
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--glass-border);
+}
+
+.founder-real-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-sub);
+    margin-top: -0.2rem;
+    margin-bottom: 0.4rem;
+    opacity: 0.8;
+}
+
+.business-info-mini p {
+    font-size: 0.85rem !important;
+    margin-bottom: 0.3rem !important;
+}
+
+.owner-footer {
+    font-size: 0.75rem !important;
+    opacity: 0.7;
+    margin-top: 0.3rem;
+}
+
+/* Performance Boost */
+.reveal, .skill-card, .project-card, .service-card, .tile {
+    will-change: transform, opacity;
+}
+
 .dark-mode {
     --bg-base: #0F172A;
     --text-main: #F8FAFC;
@@ -605,6 +740,45 @@ h2 { font-size: 3.2rem; font-weight: 800; letter-spacing: -1.5px; line-height: 1
 .project-tech span { font-size: 0.75rem; font-weight: 700; padding: 0.4rem 1rem; background: rgba(0,0,0,0.05); border-radius: 100px; color: var(--text-sub); }
 
 /* Upcoming */
+/* --- Brand Section --- */
+.brand-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 2rem; margin-top: 2rem; }
+.brand-text-card, .tech-stack-card { padding: 3rem; border-radius: var(--radius); }
+.vision-mission { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2.5rem; }
+.vm-item h3 { font-size: 1.3rem; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 10px; }
+.vm-item p { font-size: 0.95rem; color: var(--text-sub); }
+
+.tech-chips { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.5rem; }
+.tech-stack-card h3 { margin-bottom: 1.5rem; color: var(--primary); }
+
+/* --- Why Choose Section --- */
+.features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.feature-card { padding: 3rem 2.5rem; border-radius: var(--radius); text-align: center; transition: var(--transition); }
+.feature-card:hover { transform: translateY(-10px); border-color: var(--primary); box-shadow: 0 20px 40px rgba(139, 92, 246, 0.12); }
+.feature-card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 1.5rem; display: inline-block; }
+.feature-card h3 { font-size: 1.4rem; margin-bottom: 1rem; }
+.feature-card p { color: var(--text-sub); font-size: 0.95rem; }
+
+/* --- Our Business --- */
+.business-card { text-align: center; padding: 5rem 3rem; }
+.business-card p { max-width: 800px; margin: 2rem auto 0; font-size: 1.2rem; color: var(--text-sub); line-height: 1.8; }
+
+/* --- Contact Details --- */
+.contact-details { margin-top: 2rem; display: grid; gap: 1.5rem; }
+.contact-details p { display: flex; align-items: flex-start; gap: 15px; font-size: 1.05rem; }
+.contact-details i { color: var(--primary); margin-top: 4px; flex-shrink: 0; }
+
+@media (max-width: 1024px) {
+    .brand-grid, .features-grid, .vision-mission { grid-template-columns: 1fr; }
+    .business-card { padding: 3rem 1.5rem; }
+    .business-card p { font-size: 1rem; }
+    .brand-text-card, .tech-stack-card { padding: 2rem 1.5rem; }
+}
+
+/* Footer Improvements */
+.footer-links { gap: 1.5rem; }
+.footer-links a { font-weight: 600; }
+
+/* --- Existing Styles --- */
 .upcoming-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
 .upcoming-card { padding: 3.5rem 3rem; border-radius: var(--radius); }
 .coming-soon { color: var(--secondary); font-weight: 800; font-size: 0.85rem; margin-bottom: 1.2rem; text-transform: uppercase; }
@@ -675,17 +849,61 @@ h2 { font-size: 3.2rem; font-weight: 800; letter-spacing: -1.5px; line-height: 1
     grid-template-columns: 140px 1fr;
     grid-template-rows: auto auto auto auto;
     gap: 1rem;
-}
-
-.tile {
+    position: relative;
     padding: 1.5rem;
     border-radius: 28px;
-    border: 1px solid rgba(139, 92, 246, 0.12);
     background: var(--glass-bg);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-premium);
+    overflow: hidden;
+}
+
+/* Neon Border Beam Effect - Only on boundaries */
+.bento-inner-grid::before {
+    content: '';
+    position: absolute;
+    inset: -50%; /* Large area for rotation */
+    background: conic-gradient(
+        from 0deg,
+        transparent 0deg,
+        transparent 280deg,
+        var(--primary) 300deg,
+        var(--secondary) 340deg,
+        transparent 360deg
+    );
+    animation: rotateNeon 4s linear infinite;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Mask to keep the beam only on the border */
+.bento-inner-grid::after {
+    content: '';
+    position: absolute;
+    inset: 2px; /* This creates the thin 2px border thickness */
+    background: var(--bg-base); /* Match background to hide the center of the beam */
+    border-radius: 26px;
+    z-index: 1;
+    opacity: 0.95; /* Keep it slightly opaque to block the beam but look premium */
+    backdrop-filter: blur(30px);
+}
+
+/* For Dark Mode */
+.dark-mode .bento-inner-grid::after {
+    background: #1e293b; /* Solid dark color to block inner light */
+}
+
+/* Ensure content is on top */
+.tile {
+    position: relative;
+    z-index: 2;
+}
+
+@keyframes rotateNeon {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 .tile:hover {
@@ -738,7 +956,14 @@ h2 { font-size: 3.2rem; font-weight: 800; letter-spacing: -1.5px; line-height: 1
 .badge-icon { width: 14px; height: 14px; color: var(--primary); }
 .role-badge span { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; color: var(--primary); letter-spacing: 1px; }
 
-.tile-identity h3 { font-size: 1.6rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.2rem; }
+.tile-identity h3 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.2rem;
+}
 .designation { font-size: 0.85rem; font-weight: 600; color: var(--text-sub); }
 
 .tile-bio {
@@ -1170,12 +1395,43 @@ h2 { font-size: 3.2rem; font-weight: 800; letter-spacing: -1.5px; line-height: 1
         grid-template-columns: 90px 1fr !important;
         grid-template-rows: auto auto auto;
         gap: 0.8rem !important;
-        padding: 1.2rem;
-        background: #fff;
-        border-radius: 24px;
-        border: 1px solid rgba(139, 92, 246, 0.1);
-        box-shadow: 0 8px 25px rgba(0,0,0,0.03);
+        padding: 1.5rem;
+        background: var(--glass-bg);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-radius: 28px;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid var(--glass-border);
+        box-shadow: var(--shadow-premium);
     }
+
+    .bento-inner-grid::before {
+        content: '';
+        position: absolute;
+        inset: -150%;
+        background: conic-gradient(
+            from 0deg,
+            transparent 0deg,
+            transparent 280deg,
+            var(--primary) 300deg,
+            var(--secondary) 340deg,
+            transparent 360deg
+        );
+        animation: rotateNeon 4s linear infinite;
+        z-index: 0;
+    }
+
+    .bento-inner-grid::after {
+        content: '';
+        position: absolute;
+        inset: 2px;
+        background: var(--bg-base);
+        border-radius: 26px;
+        z-index: 1;
+        opacity: 0.98;
+    }
+    .dark-mode .bento-inner-grid::after { background: #1e293b; }
 
     .tile { background: transparent !important; border: none !important; box-shadow: none !important; padding: 0 !important; backdrop-filter: none !important; }
 
@@ -1190,7 +1446,13 @@ h2 { font-size: 3.2rem; font-weight: 800; letter-spacing: -1.5px; line-height: 1
         text-align: left; align-items: flex-start;
         padding-top: 0.1rem;
     }
-    .tile-identity h3 { font-size: 1.3rem; margin-bottom: 0; }
+    .tile-identity h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0;
+        background: linear-gradient(to right, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
     .role-badge { margin-bottom: 0.3rem; padding: 0.2rem 0.6rem; }
     .role-badge span { font-size: 0.6rem; }
     .designation { font-size: 0.75rem; }
@@ -1235,7 +1497,15 @@ h2 { font-size: 3.2rem; font-weight: 800; letter-spacing: -1.5px; line-height: 1
     .skill-card { padding: 1.2rem 0.8rem; }
     .stat-item .count { font-size: 2.1rem; }
 
-    .contact-wrapper { padding: 1.5rem; gap: 1.5rem; border-radius: 20px; }
+    .contact-wrapper {
+        grid-template-columns: 1fr !important;
+        padding: 2rem 1.5rem;
+        gap: 3rem;
+        border-radius: 24px;
+    }
+    .contact-info { text-align: center; }
+    .contact-details p { justify-content: center; text-align: center; }
+    .social-links { justify-content: center; }
     .footer { padding: 1.5rem 0; }
     .bento-glowing-divider { display: none; }
 

@@ -1,19 +1,19 @@
 {
-  "name": "AB SHAB | Premium Android Developer",
+  "name": "AB SHAB | Android App Development & Software Solutions",
   "short_name": "AB SHAB",
-  "description": "Portfolio of AB SHAB, a Premium Android Developer.",
-  "start_url": "/",
+  "description": "AB SHAB develops Android applications, websites and custom software solutions. Premium software development brand focused on innovation.",
+  "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#FAF7FF",
   "theme_color": "#8B5CF6",
   "icons": [
     {
-      "src": "assets/images/icon-192.png",
+      "src": "assets/images/only_ab_logo.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "assets/images/icon-512.png",
+      "src": "assets/images/only_ab_logo.png",
       "sizes": "512x512",
       "type": "image/png"
     }

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms & Conditions | AB SHAB</title>
+    <link rel="icon" type="image/png" href="assets/images/only_ab_logo.png">
+    <link rel="apple-touch-icon" href="assets/images/only_ab_logo.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            --bg-base: #FAF7FF;
+            --primary: #8B5CF6;
+            --primary-dark: #7C3AED;
+            --secondary: #EC4899;
+            --text-main: #1F2937;
+            --text-sub: #4B5563;
+            --glass-bg: rgba(255, 255, 255, 0.45);
+            --glass-border: rgba(255, 255, 255, 0.6);
+            --nav-bg: rgba(255, 255, 255, 0.4);
+            --card-bg: rgba(255, 255, 255, 0.45);
+            --radius: 24px;
+            --shadow-premium: 0 20px 40px rgba(139, 92, 246, 0.08);
+            --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .dark-mode {
+            --bg-base: #0F172A;
+            --text-main: #F8FAFC;
+            --text-sub: #94A3B8;
+            --glass-bg: rgba(30, 41, 59, 0.4);
+            --glass-border: rgba(51, 65, 85, 0.5);
+            --nav-bg: rgba(15, 23, 42, 0.6);
+            --card-bg: rgba(30, 41, 59, 0.4);
+            --shadow-premium: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            line-height: 1.6;
+            transition: background-color 0.4s ease;
+        }
+
+        /* Logo Styling */
+        .nav-logo { width: 44px; height: auto; margin-right: 12px; }
+        .logo-wrapper { display: flex; align-items: center; text-decoration: none; }
+        .footer-logo-box { display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem; }
+        .footer-logo { width: 40px; height: auto; }
+        .footer-brand-name { font-size: 1.25rem; font-weight: 800; color: var(--text-main); }
+        @media (max-width: 1024px) { .nav-logo { width: 38px; } }
+
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 48px; width: 100%; }
+        .glass { background: var(--glass-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid var(--glass-border); box-shadow: var(--shadow-premium); }
+
+        /* Navbar */
+        .navbar { position: fixed; top: 1.5rem; left: 0; right: 0; z-index: 1000; }
+        .nav-container { max-width: 1000px; margin: 0 auto; padding: 0.8rem 2rem; border-radius: 100px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: 800; font-size: 1.4rem; color: var(--text-main); text-decoration: none; }
+        .nav-links a { text-decoration: none; color: var(--text-main); font-size: 0.9rem; font-weight: 600; margin: 0 0.65rem; transition: color 0.3s ease; }
+        .nav-links a:hover { color: var(--primary); }
+        .nav-action { display: flex; align-items: center; }
+        .theme-toggle-btn { background: var(--glass-bg); border: 1px solid var(--glass-border); color: var(--text-main); width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; margin-right: 0.5rem; transition: var(--transition); }
+        .dark-mode .moon-icon, .sun-icon { display: none; }
+        .dark-mode .sun-icon { display: block; }
+        .moon-icon { display: block; }
+        .btn-nav { background: var(--primary); color: #fff; padding: 0.7rem 1.5rem; border-radius: 100px; text-decoration: none; font-weight: 700; font-size: 0.85rem; transition: all 0.3s; }
+        .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; color: var(--text-main); }
+
+        /* Header */
+        .page-header { padding: 12rem 0 4rem; text-align: center; }
+        .page-header h1 { font-size: 3.5rem; font-weight: 800; letter-spacing: -2px; margin-bottom: 1rem; background: linear-gradient(to right, var(--text-main), var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .section-tag { font-family: var(--mono); font-size: 0.8rem; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 2.5px; margin-bottom: 1rem; display: block; }
+
+        /* Content */
+        .content-container { max-width: 900px; margin: 0 auto 8rem; }
+        .content-card { padding: 4rem; border-radius: var(--radius); }
+        .content-section { margin-bottom: 3rem; }
+        .content-section h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 1.2rem; color: var(--primary); }
+        .content-section p { color: var(--text-sub); margin-bottom: 1rem; font-size: 1.05rem; }
+        .content-section ul { margin-left: 1.5rem; color: var(--text-sub); margin-bottom: 1rem; }
+        .content-section li { margin-bottom: 0.5rem; }
+
+        /* Footer */
+        .footer { padding: 4rem 0; }
+        .footer-divider { height: 1px; width: 100%; background: linear-gradient(90deg, transparent, var(--primary), transparent); margin-bottom: 3rem; opacity: 0.3; }
+        .footer-bottom { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1.5rem; }
+        .footer-links { display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: wrap; }
+        .footer-links a { text-decoration: none; color: var(--text-sub); font-size: 0.9rem; font-weight: 500; transition: all 0.3s ease; }
+        .footer-links a:hover { color: var(--primary); }
+        .separator { color: var(--glass-border); font-size: 0.8rem; }
+        .last-updated { font-weight: 700; color: var(--text-sub); margin-top: 4rem; text-align: center; font-size: 0.9rem; }
+
+        @media (max-width: 1024px) {
+            .container { padding: 0 24px; }
+            .navbar { top: 0; padding: 0.5rem 0; background: var(--nav-bg); backdrop-filter: blur(15px); border-bottom: 1px solid var(--glass-border); position: sticky; }
+            .nav-container { padding: 0.5rem 1rem; border-radius: 0; max-width: 100%; border: none; background: transparent; }
+            .nav-links { display: none; }
+            .nav-links.active { display: flex; flex-direction: column; position: absolute; top: 3.8rem; right: 1rem; width: 240px; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(30px); padding: 1rem; border-radius: 24px; border: 1px solid rgba(139, 92, 246, 0.2); }
+            .dark-mode .nav-links.active { background: rgba(15, 23, 42, 0.9); }
+            .nav-links.active a { display: block; padding: 0.8rem; }
+            .mobile-menu-btn { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; }
+            .page-header h1 { font-size: 2.5rem; }
+            .content-card { padding: 2rem; }
+        }
+    </style>
+</head>
+<body class="premium-theme">
+    <header class="navbar">
+        <nav class="nav-container glass">
+            <a href="index.html" class="logo">AB SHAB</a>
+            <div class="nav-links">
+                <a href="index.html#hero">Home</a>
+                <a href="index.html#services">Services</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#skills">Skills</a>
+                <a href="index.html#team">Team</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <div class="nav-action">
+                <button id="themeToggle" class="theme-toggle-btn">
+                    <i data-lucide="moon" class="moon-icon"></i>
+                    <i data-lucide="sun" class="sun-icon"></i>
+                </button>
+                <a href="index.html#contact" class="btn-nav">Hire Me</a>
+                <button class="mobile-menu-btn">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <span class="section-tag">Legal</span>
+                <h1>Terms & Conditions</h1>
+            </div>
+        </section>
+
+        <section class="content-container container">
+            <div class="content-card glass">
+                <div class="content-section">
+                    <h2>1. Acceptance of Terms</h2>
+                    <p>By accessing and using https://abshab.com, you accept and agree to be bound by the terms and provision of this agreement.</p>
+                </div>
+
+                <div class="content-section">
+                    <h2>2. Use of Website</h2>
+                    <p>You agree to use the website only for lawful purposes and in a way that does not infringe the rights of, restrict or inhibit anyone else's use and enjoyment of the website.</p>
+                </div>
+
+                <div class="content-section">
+                    <h2>3. Intellectual Property</h2>
+                    <p>All content included on this site, such as source code, UI designs, logos, graphics, apps, text, and images, is the property of <strong>AB SHAB</strong> and protected by international copyright laws. You may not reproduce, distribute, or create derivative works without express written permission.</p>
+                </div>
+
+                <div class="content-section">
+                    <h2>4. User Responsibilities</h2>
+                    <p>As a user, you must not:</p>
+                    <ul>
+                        <li>Attempt to hack or interfere with the website's security.</li>
+                        <li>Reverse engineer any part of the website or apps provided.</li>
+                        <li>Copy or scrape content for commercial use without permission.</li>
+                        <li>Abuse any services provided through the website.</li>
+                        <li>Use the website for any illegal or unauthorized purpose.</li>
+                    </ul>
+                </div>
+
+                <div class="content-section">
+                    <h2>5. Services</h2>
+                    <p>AB SHAB provides professional Android Development, UI/UX Design, and Software Development services. Specific project terms are governed by individual service agreements.</p>
+                </div>
+
+                <div class="content-section">
+                    <h2>6. Third Party Links</h2>
+                    <p>This website may contain links to external websites that are not provided or maintained by or in any way affiliated with AB SHAB. Please note that AB SHAB does not guarantee the accuracy, relevance, timeliness, or completeness of any information on these external websites.</p>
+                </div>
+
+                <div class="content-section">
+                    <h2>7. Disclaimer</h2>
+                    <p>The services and information on this website are provided "as is" without any warranties of any kind, either express or implied. AB SHAB does not warrant that the website will be error-free or uninterrupted.</p>
+                </div>
+
+                <div class="content-section">
+                    <h2>8. Limitation of Liability</h2>
+                    <p>In no event shall AB SHAB be liable for any indirect, incidental, special, or consequential damages arising out of or in connection with your use of the website or services.</p>
+                </div>
+
+                <div class="content-section">
+                    <h2>9. Changes</h2>
+                    <p>AB SHAB reserves the right to change these terms at any time without prior notice. Your continued use of the site following any changes constitutes your acceptance of the new Terms.</p>
+                </div>
+
+                <div class="content-section">
+                    <h2>10. Contact</h2>
+                    <p>For any questions regarding these Terms, please contact us at:</p>
+                    <p>Email: <a href="mailto:abshab.official@gmail.com" style="color: var(--primary);">abshab.official@gmail.com</a></p>
+                </div>
+
+                <div class="legal-footer-info">
+                    <p>These services are provided under the AB SHAB brand.</p>
+                    <p><strong>Business Owner:</strong> Ajay Singh</p>
+                </div>
+
+                <p class="last-updated">Last Updated: 18 July 2026</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-divider"></div>
+            <div class="footer-bottom">
+                <div class="footer-links">
+                    <a href="terms.html">Terms</a>
+                    <span class="separator">•</span>
+                    <a href="privacy.html">Privacy</a>
+                    <span class="separator">•</span>
+                    <a href="support.html">Support</a>
+                    <span class="separator">•</span>
+                    <a href="sitemap.html">Sitemap</a>
+                </div>
+                <div class="footer-copyright">
+                    <p>&copy; 2026 AB SHAB. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { html.classList.add('dark-mode'); }
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark-mode');
+            localStorage.setItem('theme', html.classList.contains('dark-mode') ? 'dark' : 'light');
+        });
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = menuBtn.querySelector('i');
+            icon.setAttribute('data-lucide', navLinks.classList.contains('active') ? 'x' : 'menu');
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

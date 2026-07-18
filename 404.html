@@ -14,18 +14,28 @@
             justify-content: center;
             align-items: center;
             text-align: center;
+            padding: 2rem;
+        }
+        .error-logo {
+            width: 120px;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.4));
         }
         .error-code {
-            font-size: 10rem;
+            font-size: 8rem;
             font-weight: 800;
             color: var(--primary);
             line-height: 1;
             margin-bottom: 1rem;
         }
         .error-message {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             color: var(--text-sub);
             margin-bottom: 3rem;
+            max-width: 500px;
+        }
+        @media (max-width: 768px) {
+            .error-code { font-size: 6rem; }
         }
     </style>
 </head>
@@ -35,7 +45,7 @@
 
     <main class="error-page container">
         <h1 class="error-code">404</h1>
-        <p class="error-message">Oops! It seems this transmission has been lost in space.</p>
+        <p class="error-message">Oops! It seems this transmission has been lost in space. The page you are looking for does not exist.</p>
         <a href="/" class="btn-primary">Return to Base</a>
     </main>
 

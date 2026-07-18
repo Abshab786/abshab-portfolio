@@ -1,345 +1,206 @@
 /**
- * AB SHAB Portfolio Core Logic
+ * AB SHAB Portfolio - Optimized Performance Engine
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. WORLD-CLASS PREMIUM SPLASH SCREEN LOGIC
-    const typewriter = document.getElementById('code-typing-engine');
-    const bar = document.getElementById('progress-fill-premium');
-    const pct = document.getElementById('pct-counter-ui');
-    const statusText = document.getElementById('loading-msg-ui');
     const splash = document.getElementById('preloader');
+    const splashShown = sessionStorage.getItem('splashShown');
 
-    // Ensure body is not scrollable during splash
-    document.body.style.overflow = 'hidden';
+    // 1. IMMEDIATE ACTIONS (Theme & Layout)
+    initTheme();
+    initMobileMenu();
 
-    const codeSnippet = `object Abshab {
-    val name = "AB SHAB"
-    val role = "Founder & Lead Android Developer"
-    val mission = "Building Beautiful Android Experiences"
-    val stack = listOf(
-        "Kotlin", "Jetpack Compose",
-        "Firebase", "MVVM", "REST API"
-    )
-}
-Portfolio.launch()`;
-
-    const loadingPhases = [
-        "Initializing Portfolio...",
-        "Loading Android Stack...",
-        "Loading Components...",
-        "Compiling Creativity...",
-        "Optimizing Performance...",
-        "Launching Portfolio..."
-    ];
-
-    let charIdx = 0;
-    let progress = 0;
-    let isTypingDone = false;
-
-    function startPremiumSplash() {
-        const typeInterval = setInterval(() => {
-            if (typewriter && charIdx < codeSnippet.length) {
-                typewriter.textContent += codeSnippet.charAt(charIdx);
-                charIdx++;
-            } else {
-                clearInterval(typeInterval);
-                isTypingDone = true;
-            }
-        }, 15);
+    // 2. SPLASH SCREEN CONTROL
+    if (splashShown) {
+        if (splash) splash.remove(); // Remove from DOM completely to save memory
+        document.body.style.overflow = 'auto';
+        initScrollEffects();
+    } else {
+        document.body.style.overflow = 'hidden';
+        runPremiumSplash();
     }
 
-    // Sync progress with typing and time
-    const progressInterval = setInterval(() => {
-        if (progress < 100) {
-            // Calculate typing progress
-            let typingProgress = (charIdx / codeSnippet.length) * 100;
+    // --- Core Functions ---
 
-            // Advance progress bar
-            if (progress < typingProgress) {
-                progress += 1.2;
-            } else {
-                progress += 0.3;
-            }
-
-            if (progress > 100) progress = 100;
-
-            const p = Math.floor(progress);
-            if (bar) bar.style.width = `${p}%`;
-            if (pct) pct.textContent = `${p}%`;
-
-            // Update status messages
-            const phaseIdx = Math.min(Math.floor(p / 17), loadingPhases.length - 1);
-            if (statusText && statusText.textContent !== loadingPhases[phaseIdx]) {
-                statusText.style.opacity = 0;
-                setTimeout(() => {
-                    statusText.textContent = loadingPhases[phaseIdx];
-                    statusText.style.opacity = 1;
-                }, 200);
-            }
+    function initTheme() {
+        const themeToggle = document.getElementById('themeToggle');
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark-mode');
         }
-
-        // Check if finished
-        if (isTypingDone && progress >= 100) {
-            clearInterval(progressInterval);
-            finishPremiumSplash();
-        }
-    }, 30);
-
-    function finishPremiumSplash() {
-        setTimeout(() => {
-            const logoText = document.querySelector('.splash-logo-text');
-            if(logoText) {
-                logoText.style.color = "#8B5CF6";
-                logoText.style.textShadow = "0 0 40px rgba(139, 92, 246, 0.6)";
-            }
-
-            // Fade out icons
-            document.querySelectorAll('.f-icon-item').forEach((icon, i) => {
-                setTimeout(() => {
-                    icon.style.transition = 'opacity 0.5s ease';
-                    icon.style.opacity = 0;
-                }, i * 50);
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark-mode');
+                localStorage.setItem('theme', document.documentElement.classList.contains('dark-mode') ? 'dark' : 'light');
             });
-
-            // Final transition to main website
-            setTimeout(() => {
-                if (splash) {
-                    splash.style.transition = 'opacity 1s ease, filter 1s ease';
-                    splash.style.filter = "blur(50px)";
-                    splash.style.opacity = "0";
-
-                    setTimeout(() => {
-                        splash.style.display = "none";
-                        document.body.style.overflow = "auto";
-                        // Trigger reveal for homepage elements
-                        handleReveal();
-                    }, 1000);
-                }
-            }, 800);
-        }, 500);
+        }
     }
 
-    // Canvas Background logic
-    const canvas = document.getElementById('particle-canvas-new');
-    if(canvas) {
+    function initMobileMenu() {
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        if (!menuBtn || !navLinks) return;
+
+        menuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navLinks.classList.toggle('active');
+            const icon = menuBtn.querySelector('i');
+            icon.setAttribute('data-lucide', navLinks.classList.contains('active') ? 'x' : 'menu');
+            lucide.createIcons();
+        });
+
+        document.addEventListener('click', (e) => {
+            if (navLinks.classList.contains('active') && !navLinks.contains(e.target)) {
+                navLinks.classList.remove('active');
+                menuBtn.querySelector('i').setAttribute('data-lucide', 'menu');
+                lucide.createIcons();
+            }
+        });
+    }
+
+    function runPremiumSplash() {
+        const typewriter = document.getElementById('code-typing-engine');
+        const bar = document.getElementById('progress-fill-premium');
+        const pct = document.getElementById('pct-counter-ui');
+        const statusText = document.getElementById('loading-msg-ui');
+
+        const code = `object Abshab {
+    val brand = "AB SHAB"
+    val mission = "High Quality Digital Solutions"
+    val expertise = listOf("Android", "Web", "Software")
+    val status = "Ready to Launch"
+}
+Brand.initialize()`;
+
+        let charIdx = 0;
+        let progress = 0;
+
+        // Optimized Typing & Progress
+        const timer = setInterval(() => {
+            if (charIdx < code.length) {
+                typewriter.textContent += code.charAt(charIdx);
+                charIdx++;
+            }
+
+            if (progress < 100) {
+                progress += (charIdx / code.length) > (progress/100) ? 1.5 : 0.5;
+                const p = Math.floor(Math.min(progress, 100));
+                if (bar) bar.style.width = `${p}%`;
+                if (pct) pct.textContent = `${p}%`;
+                if (p > 80 && statusText) statusText.textContent = "Launching...";
+            }
+
+            if (charIdx >= code.length && progress >= 100) {
+                clearInterval(timer);
+                setTimeout(exitSplash, 500);
+            }
+        }, 20);
+
+        initCanvas(); // Run particles only during splash
+    }
+
+    function exitSplash() {
+        sessionStorage.setItem('splashShown', 'true');
+        splash.style.transition = 'opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+        splash.style.opacity = '0';
+        setTimeout(() => {
+            splash.remove();
+            document.body.style.overflow = 'auto';
+            initScrollEffects();
+        }, 600);
+    }
+
+    function initScrollEffects() {
+        // Intersection Observer for Reveal (Butter Smooth)
+        const observerOptions = { threshold: 0.15 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    if (entry.target.classList.contains('stats')) animateCounters(entry.target);
+                    observer.unobserve(entry.target); // Run once for performance
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section, .reveal, .skill-card, .project-card, .service-card, .bento-card-wrapper, .glass-card, .footer').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Scroll Progress & Back to Top
+        const scrollBar = document.getElementById('scrollBar');
+        const btt = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            const winScroll = window.scrollY;
+            const height = document.documentElement.scrollHeight - window.innerHeight;
+            if (scrollBar) scrollBar.style.width = (winScroll / height * 100) + "%";
+            if (btt) btt.classList.toggle('visible', winScroll > 600);
+        }, { passive: true }); // Optimized scroll listener
+
+        if (btt) btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    }
+
+    function animateCounters(container) {
+        container.querySelectorAll('.count:not(.counted)').forEach(count => {
+            count.classList.add('counted');
+            const target = +count.getAttribute('data-target');
+            let current = 0;
+            const step = target / 50;
+            const timer = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                    count.innerText = target.toLocaleString();
+                    clearInterval(timer);
+                } else {
+                    count.innerText = Math.floor(current).toLocaleString();
+                }
+            }, 30);
+        });
+    }
+
+    function initCanvas() {
+        const canvas = document.getElementById('particle-canvas-new');
+        if (!canvas) return;
         const ctx = canvas.getContext('2d');
         let particles = [];
         const resize = () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; };
         window.addEventListener('resize', resize);
         resize();
 
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.v = Math.random() * 0.4 + 0.1;
-                this.s = Math.random() * 2;
-            }
-            update() { this.y -= this.v; if(this.y < 0) this.y = canvas.height; }
-            draw() { ctx.fillStyle = "rgba(139, 92, 246, 0.15)"; ctx.beginPath(); ctx.arc(this.x, this.y, this.s, 0, Math.PI * 2); ctx.fill(); }
-        }
-        for(let i=0; i<40; i++) particles.push(new Particle());
+        for(let i=0; i<30; i++) particles.push({ x: Math.random()*canvas.width, y: Math.random()*canvas.height, v: Math.random()*0.5+0.2, s: Math.random()*2 });
+
         function anim() {
+            if (!document.getElementById('preloader')) return; // Stop if splash is gone
             ctx.clearRect(0,0,canvas.width,canvas.height);
-            particles.forEach(p=>{p.update(); p.draw();});
+            ctx.fillStyle = "rgba(139, 92, 246, 0.2)";
+            particles.forEach(p => {
+                p.y -= p.v; if(p.y < 0) p.y = canvas.height;
+                ctx.beginPath(); ctx.arc(p.x, p.y, p.s, 0, Math.PI*2); ctx.fill();
+            });
             requestAnimationFrame(anim);
         }
         anim();
     }
 
-    // Fail-safe: Force hide splash if it takes too long (10 seconds)
-    setTimeout(() => {
-        if (splash && splash.style.display !== 'none') {
-            console.log('Splash Screen Failsafe Triggered');
-            finishPremiumSplash();
-        }
-    }, 10000);
-
-    // Start the splash logic
-    setTimeout(startPremiumSplash, 800);
-
-    // 2. Theme Toggle Logic
-    const themeToggle = document.getElementById('themeToggle');
-    const currentTheme = localStorage.getItem('theme');
-
-    if (currentTheme) {
-        document.documentElement.classList.toggle('dark-mode', currentTheme === 'dark');
-    }
-
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            document.documentElement.classList.toggle('dark-mode');
-            const theme = document.documentElement.classList.contains('dark-mode') ? 'dark' : 'light';
-            localStorage.setItem('theme', theme);
-        });
-    }
-
-    // 2.1 Mobile Menu Toggle
-    const menuBtn = document.querySelector('.mobile-menu-btn');
-    const navLinks = document.querySelector('.nav-links');
-
-    if (menuBtn && navLinks) {
-        menuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            const icon = menuBtn.querySelector('i');
-            if (navLinks.classList.contains('active')) {
-                icon.setAttribute('data-lucide', 'x');
-            } else {
-                icon.setAttribute('data-lucide', 'menu');
-            }
-            lucide.createIcons();
-        });
-
-        // Close menu when link is clicked
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                const icon = menuBtn.querySelector('i');
-                icon.setAttribute('data-lucide', 'menu');
-                lucide.createIcons();
-            });
-        });
-    }
-
-    // 3. Scroll Progress Bar & Reveal on Scroll
-    const scrollBar = document.getElementById('scrollBar');
-    const backToTop = document.getElementById('backToTop');
-
-    const handleScroll = () => {
-        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrolled = (winScroll / height) * 100;
-
-        if (scrollBar) scrollBar.style.width = scrolled + "%";
-
-        if (backToTop) {
-            if (winScroll > 500) backToTop.classList.add('visible');
-            else backToTop.classList.remove('visible');
-        }
-
-        handleReveal();
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    // 4. Back to Top Smooth Scroll
-    if (backToTop) {
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    }
-
-    // 5. Dynamic Copyright Year
-    const yearEl = document.getElementById('currentYear');
-    if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-    // 6. Reveal Animation Logic
-    const revealElements = document.querySelectorAll('section, .skill-card, .project-card, .upcoming-card, .glass-card, .team-card, .service-card, .bento-card-wrapper, .footer');
-
-    function handleReveal() {
-        const triggerBottom = window.innerHeight * 0.9;
-
-        revealElements.forEach(el => {
-            const elementTop = el.getBoundingClientRect().top;
-            if (elementTop < triggerBottom) {
-                el.classList.add('active');
-                el.style.opacity = '1';
-                el.style.transform = 'translateY(0)';
-                if (el.classList.contains('stats')) {
-                    animateCounters(el);
-                }
-            }
-        });
-    }
-
-    // 7. Animated Statistics Counter
-    function animateCounters(container) {
-        const counts = container.querySelectorAll('.count:not(.counted)');
-        const duration = 2000;
-
-        counts.forEach(count => {
-            count.classList.add('counted');
-            const target = +count.getAttribute('data-target');
-            const decimals = parseInt(count.getAttribute('data-decimal')) || 0;
-            const startTime = performance.now();
-
-            const updateCount = (currentTime) => {
-                const elapsed = currentTime - startTime;
-                const progress = Math.min(elapsed / duration, 1);
-                const easeProgress = 1 - Math.pow(1 - progress, 4);
-                const current = easeProgress * target;
-
-                count.innerText = decimals > 0 ? current.toFixed(decimals) : Math.floor(current).toLocaleString();
-
-                if (progress < 1) requestAnimationFrame(updateCount);
-                else count.innerText = decimals > 0 ? target.toFixed(decimals) : target.toLocaleString();
-            };
-            requestAnimationFrame(updateCount);
-        });
-    }
-
-    // 8. Contact Form Integration (Web3Forms)
+    // Form Handling
     const contactForm = document.getElementById('contactForm');
-    const formStatus = document.getElementById('formStatus');
-    const submitBtn = document.getElementById('submitBtn');
-
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            submitBtn.classList.add('form-loading');
-            submitBtn.disabled = true;
-
-            const formData = new FormData(contactForm);
-            const object = Object.fromEntries(formData);
-
-            if (formStatus) {
-                formStatus.textContent = 'Sending transmission...';
-                formStatus.className = 'form-status status-info';
-                formStatus.style.display = 'block';
-            }
-
+            const btn = document.getElementById('submitBtn');
+            btn.disabled = true;
+            btn.innerText = "Sending...";
             fetch('https://api.web3forms.com/submit', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                body: JSON.stringify(object)
-            })
-            .then(async (response) => {
-                let res = await response.json();
-                if (response.status == 200) {
-                    showStatus('Transmission received! I will contact you soon.', 'success');
-                    contactForm.reset();
-                } else {
-                    showStatus(res.message || 'Something went wrong.', 'error');
-                }
-            })
-            .catch(() => {
-                showStatus('Network error.', 'error');
-            })
-            .finally(() => {
-                submitBtn.classList.remove('form-loading');
-                submitBtn.disabled = false;
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(Object.fromEntries(new FormData(contactForm)))
+            }).then(() => {
+                document.getElementById('formStatus').innerText = "Message Sent!";
+                contactForm.reset();
+            }).finally(() => {
+                btn.disabled = false;
+                btn.innerText = "Send Transmission";
             });
-        });
-    }
-
-    function showStatus(message, type) {
-        if (formStatus) {
-            formStatus.textContent = message;
-            formStatus.className = 'form-status status-' + type;
-            formStatus.style.display = 'block';
-        }
-    }
-
-    // 9. Ambient Glow Interaction
-    const glowTop = document.querySelector('.bg-glow-top');
-    const glowBottom = document.querySelector('.bg-glow-bottom');
-    if (glowTop && glowBottom) {
-        document.addEventListener('mousemove', (e) => {
-            const x = (e.clientX / window.innerWidth - 0.5) * 30;
-            const y = (e.clientY / window.innerHeight - 0.5) * 30;
-            glowTop.style.transform = `translate(${x}px, ${y}px)`;
-            glowBottom.style.transform = `translate(${-x}px, ${-y}px)`;
         });
     }
 });
